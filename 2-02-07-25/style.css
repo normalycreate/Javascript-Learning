@@ -1,0 +1,14 @@
+* {
+    font-family: sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+.calculation-button {
+    padding: 20px;
+    font-family: sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#Calculation:empty::before {
+  content: "\00a0"; /* Unicode untuk spasi palsu */
+}
