@@ -46,6 +46,10 @@ document.getElementById("kertas").addEventListener("click", function(){
     }    
     skorstat();
 });
+document.getElementById("remove").addEventListener("click", function(){
+    skor = {menang: 0,kalah: 0,setara: 0};
+    skorstat();
+})
 function fungsiacak() {
     let pilihan = ["kertas","batu","gunting"];
     let acak = [Math.floor(Math.random() * 3)];
