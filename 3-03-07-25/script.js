@@ -5,8 +5,8 @@ function tambahKlik() {
     localStorage.setItem("skor", JSON.stringify(skor));
 }
 function resetKlik() {
-    skor = 0;
-    localStorage.removeItem(skor);
+    skor = {menang: 0,kalah: 0,setara: 0};
+    localStorage.removeItem("skor");
 }
 function tambahSkor(status) {
     if (status =="menang") skor.menang++;
@@ -65,6 +65,7 @@ document.getElementById("kertas").addEventListener("click", function(){
 document.getElementById("remove").addEventListener("click", function(){
     skor = {menang: 0,kalah: 0,setara: 0};
     skorstat();
+    resetKlik();
 })
 function fungsiacak() {
     let pilihan = ["kertas","batu","gunting"];
