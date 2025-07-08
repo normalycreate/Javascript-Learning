@@ -1,12 +1,10 @@
-//tombol mengambil nilai atau string
-let button = document.getElementById("berlangganan");
+const whatDYD = [];
 
-//membandingkan antar string dan menambahkan interaksi click
-button.addEventListener("click", function(){
-    //mengecek isi string
-    if (button.innerHTML === "Berlangganan") {
-        button.innerHTML = `Langganan`;
-    } else {
-        button.innerHTML = `Berlangganan`;
-    }
-});
+function addTask() {
+    const whatDoInput = document.getElementById('whatForList');
+    const doing = whatDoInput.value;
+
+    whatDYD.push(doing);
+    console.log(whatDYD);
+    whatDoInput.value = null;
+};           
