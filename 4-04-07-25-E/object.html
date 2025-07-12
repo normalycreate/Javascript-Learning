@@ -7,8 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="To Do Name" id="whatForList"> <button onclick="addTask();">Add</button>
+    <div class="allContentForList">
+        <div class="doList">
+            <input class="writeForList" id="writeToDo" type="text" placeholder="Apa yang ingin anda lakukan?">
+            <input type="submit" class="buttonSend" id="sendToDo">
+        </div>
+        <div class="displayedList"></div>
+    </div>
 </body>
 </html>
