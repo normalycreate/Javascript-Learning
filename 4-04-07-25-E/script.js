@@ -6,7 +6,7 @@ const submitIt = document.querySelector(".buttonSend");
 
 document.querySelector(".buttonSend").addEventListener("click", function(){
     const taskText = inputWrite.value;
-    if (taskText === "") {
+    if (taskText.trim() === "") {
         alert("Teks yang anda masukan kosong, tolong diisi!");
         return;
     }
