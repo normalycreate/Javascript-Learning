@@ -54,3 +54,18 @@ displayIt.addEventListener('click', function(event) {
         displayIt.removeChild(taskToRemove);
     }
 });
+
+const someList = document.getElementById("ulListItem");
+const listItem = ['Iphone 15', 'Samsung S24', 'Oppo Find X8', 'Vivo X200'];
+
+if (someList) {
+    const wadahVirtual = document.createDocumentFragment();
+    for(item of listItem) {
+        let newListItem = document.createElement('li');
+        newListItem.textContent = item;
+        wadahVirtual.appendChild(newListItem);
+    }
+    someList.appendChild(wadahVirtual)
+} else {
+    console.error("Error: Elemen dengan ID 'ulListItem' tidak dapat ditemukan di halaman.");
+}
