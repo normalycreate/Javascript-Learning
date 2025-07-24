@@ -9,63 +9,39 @@ const displayIt = document.querySelector(".displayedList");
 
 // --- 2. Event Listener untuk Menambah Tugas ---
 thisForm.addEventListener("submit", function(event) {
-    // Mencegah form me-reload halaman
     event.preventDefault();
 
+    //Bagian taskText ini penting
     const taskText = inputWrite.value.trim();
-    if (taskText.trim() === "") {
+    if (taskText === "") {
         alert("Teks yang anda masukan kosong, tolong diisi!");
         return;
     }
 
-    // Buat elemen <p> untuk satu baris tugas
     const taskElement = document.createElement('p');
     taskElement.classList.add('addNewListView');
 
-    // Buat elemen <span> untuk teksnya saja
-    const textSpan = document.createElement('span');
-    textSpan.textContent = taskText;
+    const groupSpan = document.createElement('span');
+    groupSpan.textContent = taskText;
+    
+    const hapusTombol = document.createElement('button');
+    hapusTombol.textContent = 'Hapus';
+    hapusTombol.classList.add('deleteButton'); // Typo corrected
+    
+    hapusTombol.style.cursor = 'pointer';
 
-    // Buat tombol 'Hapus'
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Hapus';
-    deleteButton.classList.add('cleanButton'); // Gunakan kelas ini untuk identifikasi
+    taskElement.appendChild(groupSpan);
+    taskElement.appendChild(hapusTombol);
 
-    // Gabungkan semuanya: masukkan teks dan tombol ke dalam <p>
-    taskElement.appendChild(textSpan);
-    taskElement.appendChild(deleteButton);
-
-    // Masukkan baris tugas yang sudah lengkap ke dalam daftar
     displayIt.appendChild(taskElement);
 
-    // Kosongkan input dan kembalikan fokus
     inputWrite.value = "";
     inputWrite.focus();
 });
 
-// --- 3. Event Listener untuk Menghapus Tugas (Event Delegation) ---
-// Kita pasang listener di wadah utamanya, bukan di setiap tombol
-displayIt.addEventListener('click', function(event) {
-    // Cek apakah elemen yang diklik adalah tombol dengan kelas 'cleanButton'
-    if (event.target.classList.contains('cleanButton')) {
-        // Jika ya, ambil elemen induk dari tombol itu (yaitu elemen <p>)
-        const taskToRemove = event.target.parentElement;
-        // Hapus elemen <p> tersebut dari wadahnya
-        displayIt.removeChild(taskToRemove);
+displayIt.addEventListener('click', function(event){
+    if (event.target.classList.contains('deleteButton')) {
+        const sedangMenghapusList = event.target.parentElement;
+        displayIt.removeChild(sedangMenghapusList);
     }
 });
-
-const someList = document.getElementById("ulListItem");
-const listItem = ['Iphone 15', 'Samsung S24', 'Oppo Find X8', 'Vivo X200'];
-
-if (someList) {
-    const wadahVirtual = document.createDocumentFragment();
-    for(item of listItem) {
-        let newListItem = document.createElement('li');
-        newListItem.textContent = item;
-        wadahVirtual.appendChild(newListItem);
-    }
-    someList.appendChild(wadahVirtual)
-} else {
-    console.error("Error: Elemen dengan ID 'ulListItem' tidak dapat ditemukan di halaman.");
-}
